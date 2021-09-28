@@ -23,4 +23,33 @@ header img {
 .score-container :nth-child(2){
     @apply md:text-7xl text-5xl relative md:top-0 -top-2  text-dark-text font-bold;
 }
+.content{
+    @apply w-[500px] h-[500px] mx-auto;
+}
+.btn{
+    @apply w-[150px] h-[150px] flex items-center justify-center rounded-full;
+}
+.btn-inner{
+    @apply bg-white w-[80%] h-[80%] flex items-center justify-center rounded-full border-t-4 border-gray-400;
+}
+.btn-rock{
+    background-image: linear-gradient(hsl(349, 71%, 52%) , hsl(349, 70%, 56%));
+    @apply border-b-[7px] border-gray-600 border-opacity-50;
+}
+.btn-paper{
+    background-image: linear-gradient(hsl(230, 89%, 62%) , hsl(230, 89%, 65%));
+    @apply border-b-[7px] border-gray-600 border-opacity-50;
+}
+.btn-scissors{
+    background-image: linear-gradient(hsl(39, 89%, 49%) , hsl(40, 84%, 53%));
+    @apply border-b-[7px] border-gray-600 border-opacity-50;
+}
+.btn-lizard{
+    background-image: linear-gradient(hsl(261, 73%, 60%) , hsl(261, 72%, 63%));
+    @apply border-b-[7px] border-gray-600 border-opacity-50;
+}
+.btn-spock{
+    background-image: linear-gradient( hsl(189, 59%, 53%) , hsl(189, 58%, 57%));
+    @apply border-b-[7px] border-gray-600 border-opacity-50;
+}
 @tailwind utilities;
