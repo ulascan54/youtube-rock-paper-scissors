@@ -76,9 +76,7 @@ header img {
 .btn-spock:hover .btn-inner{
     background-image: linear-gradient( hsl(189, 59%, 53%) , hsl(189, 58%, 57%));
 }
-.none{
-    display: none;
-}
+
 .battle{
     @apply flex justify-center items-center mt-20 ;
 }
@@ -155,5 +153,8 @@ header img {
 }
 .modal-close-sm{
     @apply block sm:hidden
+}
+.none{
+    display: none;
 }
 @tailwind utilities;
