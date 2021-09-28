@@ -3,10 +3,9 @@
 body{
     background-image: radial-gradient(hsl(214, 47%, 23%) , hsl(237, 49%, 15%));
     font-family: 'Barlow Semi Condensed', sans-serif;
-    @apply h-screen;
 }
-main{
-    @apply p-8 md:pt-12;
+.container-master{
+    @apply p-8 md:pt-12 overflow-hidden h-screen text-center;
 }
 header{
     @apply max-w-[700px] h-[118px]  md:h-[162px] border-4 border-header-outline rounded-2xl mx-auto md:py-5 md:px-8 p-5 flex justify-between items-center;
@@ -15,7 +14,7 @@ header img {
     @apply h-[70px] md:h-full 
 }
 .score-container{
-    @apply h-full md:w-[160px] w-[80px] rounded-lg text-center bg-white p-3;
+    @apply h-full md:w-[160px] w-[80px] rounded-lg  bg-white p-3;
 }
 .score-container :nth-child(1){
     @apply text-score-text tracking-widest relative md:text-base text-xs -top-1 md:top-0;
@@ -23,34 +22,138 @@ header img {
 .score-container :nth-child(2){
     @apply md:text-7xl text-5xl relative md:top-0 -top-2  text-dark-text font-bold;
 }
-.content{
+.choice{
     background-image: url('images/bg-pentagon.svg');
-    @apply w-[500px] h-[500px] mx-auto bg-no-repeat bg-center relative mt-10;
+    @apply w-[250px] md:w-[500px] md:h-[500px] h-[250px]  mx-auto bg-no-repeat bg-center bg-contain md:bg-auto  relative mt-32 md:mt-10;
 }
 .btn{
-    @apply w-[150px] h-[150px] flex items-center justify-center rounded-full border-b-[7px] border-gray-600 border-opacity-50 absolute;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    @apply md:w-[150px] md:h-[150px] w-[110px] h-[110px] flex items-center cursor-pointer justify-center rounded-full border-b-[7px] border-gray-600 border-opacity-50 absolute;
+}
+.btn img {
+    transform: translateZ(20px);
+    @apply w-[40px] md:w-auto;
+}
+.btn:hover .btn-inner{
+    @apply border-2 border-white;
 }
 .btn-inner{
-    @apply bg-white w-[80%] h-[80%] flex items-center justify-center rounded-full border-t-4 border-gray-400;
+    @apply bg-white w-[80%] h-[80%] flex items-center justify-center rounded-full border-t-4 border-gray-400 transition-all;
 }
 .btn-rock{
     background-image: linear-gradient(hsl(349, 71%, 52%) , hsl(349, 70%, 56%));
-    @apply  bottom-10 right-16;
+    @apply  md:bottom-10 md:right-16 -bottom-12 -right-2;
+}
+.btn-rock:hover .btn-inner{
+    background-image: linear-gradient(hsl(349, 71%, 52%) , hsl(349, 70%, 56%));
 }
 .btn-paper{
     background-image: linear-gradient(hsl(230, 89%, 62%) , hsl(230, 89%, 65%));
-    @apply  top-32 right-4;
+    @apply  md:top-32 md:right-4 top-10 -right-8;
+}
+.btn-paper:hover .btn-inner{
+    background-image: linear-gradient(hsl(230, 89%, 62%) , hsl(230, 89%, 65%));
 }
 .btn-scissors{
     background-image: linear-gradient(hsl(39, 89%, 49%) , hsl(40, 84%, 53%));
-    @apply  top-2 right-44;
+    @apply  md:top-2 md:right-44 -top-14 right-16;
+}
+.btn-scissors:hover .btn-inner{
+    background-image: linear-gradient(hsl(39, 89%, 49%) , hsl(40, 84%, 53%));
 }
 .btn-lizard{
     background-image: linear-gradient(hsl(261, 73%, 60%) , hsl(261, 72%, 63%));
-    @apply  bottom-10 left-16;
+    @apply  md:bottom-10 md:left-16 -bottom-12 -left-2;
+}
+.btn-lizard:hover .btn-inner{
+    background-image: linear-gradient(hsl(261, 73%, 60%) , hsl(261, 72%, 63%));
 }
 .btn-spock{
     background-image: linear-gradient( hsl(189, 59%, 53%) , hsl(189, 58%, 57%));
-    @apply  top-32 left-4;
+    @apply  md:top-32 md:left-4 top-10 -left-8;
+}
+.btn-spock:hover .btn-inner{
+    background-image: linear-gradient( hsl(189, 59%, 53%) , hsl(189, 58%, 57%));
+}
+.none{
+    display: none;
+}
+.battle{
+    @apply flex justify-center items-center mt-20 ;
+}
+.battle .btn{
+    @apply relative inset-0 z-10 sm:w-[300px] sm:h-[300px] w-[140px] h-[140px]
+}
+.battle .btn:hover{
+    @apply cursor-default z-10;
+}
+.battle .btn .btn-inner{
+    @apply relative;
+}
+.battle .btn img{
+    transform: translateZ(0px);
+    @apply w-[50px] sm:w-[120px]
+}
+.action-text{
+    @apply text-2xl tracking-widest pb-16 text-white hidden sm:block ;
+}
+.action-text-sm{
+    @apply text-sm tracking-widest py-8 text-white sm:hidden ;
+}
+.user-action{
+    @apply pr-5 sm:pr-10;
+}
+.comp-action{
+    @apply pl-5 sm:pl-10;
+}
+.response{
+    @apply w-[230px] mx-10 lg:hidden
+}
+.response p{
+    @apply text-white text-5xl font-bold
+}
+.response button{
+    @apply text-dark-text text-lg tracking-widest bg-white border w-full 
+    rounded-lg py-4 mt-5 transition-all;
+}
+.response button:hover{
+    @apply bg-transparent text-white
+}
+.response-container{
+    @apply flex justify-center items-center 
+}
+.response-lg{
+    @apply hidden lg:block;
+}
+.btn-modal{
+    @apply fixed bottom-8 sm:right-6 right-[50%] translate-x-[50%] sm:translate-x-0
+}
+.btn-modal button{
+    @apply px-8 py-2 transition-all text-white rounded-lg tracking-widest text-xl border
+}
+.btn-modal button:hover{
+    @apply text-dark-text bg-white
+}
+.modal{
+    @apply fixed inset-0 flex items-center z-50 justify-center w-full h-screen bg-black bg-opacity-40;
+}
+.modal-container{
+    @apply bg-white flex flex-col text-dark-text justify-around sm:justify-start p-8 rounded-xl h-full sm:h-auto 
+}
+.modal-header{
+    @apply flex justify-between font-bold text-3xl mb-5
+}
+.modal-close{
+    @apply opacity-40 cursor-pointer text-4xl
+}
+.modal-header span{
+    @apply hidden sm:block
+}
+.modal-header p{
+    @apply w-full sm:w-auto
+}
+.modal-close-sm{
+    @apply block sm:hidden
 }
 @tailwind utilities;
